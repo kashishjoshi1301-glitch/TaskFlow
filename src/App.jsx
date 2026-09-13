@@ -190,7 +190,7 @@ const App = () => {
    useEffect(() => {
      if (!userName) return;
      const saved = localStorage.getItem(`taskflow-tasks-${userName}`);
-     setTasks(saved ? JSON.parse(saved) : dummyTasks);
+     setTasks(saved ? JSON.parse(saved) : []);
    }, [userName]);
 
    useEffect(() => {
