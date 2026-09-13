@@ -25,7 +25,7 @@ const StatCard = ({
   const isDark = theme === "dark";
 
   return (
-    <div className={`flex flex-col gap-2 w-[100] pl-0.5 ${isDark ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
+    <div className={`flex flex-col gap-2 w-full pl-0.5 ${isDark ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
 
       <div className='flex flex-col'>
       <div className='flex flex-row justify-between'>
