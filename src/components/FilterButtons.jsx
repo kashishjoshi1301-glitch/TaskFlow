@@ -78,9 +78,9 @@ const FilterButtons = ({tasks, setTasks, searchQuery, theme}) => {
 
         <h1 className={`text-2xl font-bold py-3 px-5 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>My Tasks</h1>
         
-        <div className='flex justify-between p-2 pl-5'>
+        <div className='flex flex-col sm:flex-row justify-between gap-3 p-2 pl-5'>
        
-       <div role="group" aria-label="Filter tasks" className='flex flex-row gap-5'>
+       <div role="group" aria-label="Filter tasks" className='flex flex-row flex-wrap gap-2 sm:gap-5'>
             
             <button
               type="button"
@@ -141,9 +141,9 @@ const FilterButtons = ({tasks, setTasks, searchQuery, theme}) => {
             className={`flex flex-col gap-3 border-b w-full p-4 rounded ${isDark ? "border-[#334155]" : "border-[#e3e7ea]"}`}
             >
 
-            <div className='flex items-start justify-between gap-4'>
+            <div className='flex flex-col sm:flex-row items-start sm:justify-between gap-3 sm:gap-4'>
 
-              <div className='flex items-start gap-3 flex-1 min-w-0'>
+              <div className='flex items-start gap-3 flex-1 min-w-0 w-full sm:w-auto'>
                 <label htmlFor={`task-complete-${task.id}`} className='sr-only'>
                   Mark "{task.title}" as {task.completed ? "incomplete" : "complete"}
                 </label>
@@ -217,7 +217,7 @@ const FilterButtons = ({tasks, setTasks, searchQuery, theme}) => {
                 </div>
               </div>
 
-              <div className='flex items-center gap-3 shrink-0'>
+              <div className='flex items-center gap-3 shrink-0 pl-8 sm:pl-0'>
                 {task.dueDate && (
                   <span className={`flex items-center gap-1 text-sm whitespace-nowrap ${isDark ? "text-[#94a3b8]" : "text-[#5f6b76]"}`}>
                     <svg
@@ -258,7 +258,7 @@ const FilterButtons = ({tasks, setTasks, searchQuery, theme}) => {
 
             </div>
             
-            <div className='flex gap-3'>
+            <div className='flex flex-wrap gap-3'>
 
               <button
               type="button"

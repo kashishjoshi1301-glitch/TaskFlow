@@ -6,7 +6,8 @@ import {
   Star,
   Settings,
   SquareCheck,
-  User
+  User, 
+  Menu
 } from 'lucide-react'
 
 const Sidebar = ({ activeItem, setActiveItem, theme, userName, profileImage, handleImageUpload }) => {

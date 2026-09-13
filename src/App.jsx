@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import { Menu } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import StatCard from './components/StatCard';
@@ -156,15 +157,11 @@ const App = () => {
 
    const [tasks, setTasks] = useState(dummyTasks);
 
+   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
    const [profileImage, setProfileImage] = useState(() => {
      return localStorage.getItem("taskflow-profile-image") || null;
    });
-
-   useEffect(() => {
-     if (profileImage) {
-       localStorage.setItem("taskflow-profile-image", profileImage);
-     }
-   }, [profileImage]);
 
    const handleImageUpload = (e) => {
      const file = e.target.files[0];
@@ -188,10 +185,20 @@ const App = () => {
    });
 
    useEffect(() => {
+     if (profileImage) {
+       localStorage.setItem("taskflow-profile-image", profileImage);
+     }
+   }, [profileImage]);
+
+   useEffect(() => {
      if (!userName) return;
      const saved = localStorage.getItem(`taskflow-tasks-${userName}`);
      setTasks(saved ? JSON.parse(saved) : []);
    }, [userName]);
+
+   if (!userName) {
+     return <WelcomeScreen onNameSubmit={handleNameSubmit} />;
+   }
 
    useEffect(() => {
      if (!userName) return;
@@ -224,16 +231,41 @@ const App = () => {
   return (
     <div className={`${theme === "dark" ? "bg-[#0f172a]" : "bg-[#f1f4f6]"} min-h-screen w-full`}>
       
-      <div className='flex flex-row gap-6 items-start '>
+      <div className='flex flex-row gap-6 items-start relative'> 
+        {
+          isSidebarOpen && (
+            <div
+            onClick={() => setIsSidebarOpen(false)}
+            className='fixed inset-0 bg-black/40 z-40 lg:hidden'
+          ></div>
+          )
+        }
+
+        <div
+          className={`fixed lg:static top-0 left-0 h-full z-50 transition-transform duration-300
+          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
+        ></div>
+
         <Sidebar
           activeItem={activeItem}
-          setActiveItem={setActiveItem}
+          setActiveItem={(item) => {
+              setActiveItem(item);
+              setIsSidebarOpen(false); // mobile pe item select karte hi band ho jaaye
+            }}
           theme={theme}
           userName={userName}
           profileImage={profileImage}
           handleImageUpload={handleImageUpload}
         />
           <main className={`flex flex-col gap-6 w-full pr-6 pb-6 min-h-screen ${theme === "dark" ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
+
+          <button
+            onClick={() => setIsSidebarOpen(true)}
+            aria-label="Open menu"
+            className={`lg:hidden self-start mt-4 p-2 rounded-lg ${theme === "dark" ? "bg-[#1e293b] text-[#f1f5f9]" : "bg-white text-[#1b262c]"}`}
+          >
+            <Menu size={24} />
+          </button>
 
           <Navbar
           searchQuery = {searchQuery}

@@ -28,8 +28,8 @@ const StatCard = ({
     <div className={`flex flex-col gap-2 w-full pl-0.5 ${isDark ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
 
       <div className='flex flex-col'>
-      <div className='flex flex-row justify-between'>
-      <h1 className={`text-4xl font-bold p-1 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>Hello, {userName}</h1>
+      <div className='flex flex-col sm:flex-row justify-between gap-3 sm:gap-0'>
+      <h1 className={`text-2xl sm:text-4xl font-bold p-1 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>Hello, {userName}</h1>
 
       <div className='rounded-lg pl-1 flex justify-center items-center gap-3 hover:scale-97'>
       <button 
@@ -167,7 +167,7 @@ const StatCard = ({
       <p className={`text-xl p-1 pb-6 ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>Let's get things done today!</p>
       </div>
 
-      <div className='grid grid-cols-4 gap-6 w-full'>
+      <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  gap-4 sm:gap-6 w-full'>
 
       <div className={`flex h-[12vh] rounded p-4 justify-start items-center gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
         <div className='flex rounded-full p-2 bg-[#dff6fa]'>

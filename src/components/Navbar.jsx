@@ -8,10 +8,10 @@ const Navbar = ({ searchQuery, setSearchQuery, theme, setTheme, userName, profil
   return (
     <div className={`border-b pb-5 ${isDark ? "border-[#334155]" : "border-[#e3e7ea]"}`}>
       <nav>
-        <div className='flex flex-row justify-between items-center pl-4 pt-5 pr-6'>
-          <div className='flex flex-row gap-15 justify-center items-center'>
+        <div className='flex flex-row gap-3 justify-between items-center pl-4 pt-5 pr-6'>
+          <div className='flex flex-row gap-15 justify-center items-center flex-1 min-w-0'>
       
-                 <div className={`flex flex-row justify-center items-center gap-2 p-2 rounded active:scale-98 hover:scale-98 ${isDark ? "bg-[#1e293b] text-[#94a3b8]" : "bg-[#ffffff] text-[#5f6b76]"}`}>
+                 <div className={`flex flex-row justify-center items-center gap-2 p-2 rounded active:scale-98 hover:scale-98 w-full max-w-[300px] sm:max-w-none ${isDark ? "bg-[#1e293b] text-[#94a3b8]" : "bg-[#ffffff] text-[#5f6b76]"}`}>
                     <Search size={14} color={isDark ? "#94a3b8" : "#5b6b73"} />
 
                   <label htmlFor="task-search" className='sr-only'>Search tasks</label>
@@ -22,13 +22,13 @@ const Navbar = ({ searchQuery, setSearchQuery, theme, setTheme, userName, profil
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Search tasks"
-                  className={`w-100 outline-none text-[12px] bg-transparent ${isDark ? "text-[#f1f5f9] placeholder-[#64748b]" : "text-[#1b262c]"}`}
+                  className={`w-full outline-none text-[12px] bg-transparent ${isDark ? "text-[#f1f5f9] placeholder-[#64748b]" : "text-[#1b262c]"}`}
                   >
                   </input>
                   </div>
           </div>
 
-                <div className='flex flex-row justify-center items-center gap-10 p-2'>
+                <div className='flex flex-row justify-center items-center gap-4 sm:gap-10 p-2'>
                   <button
                     type="button"
                     aria-label="Notifications"
