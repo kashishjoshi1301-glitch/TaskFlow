@@ -1,0 +1,15 @@
+# TaskFlow
+
+TaskFlow is a task management web application that helps users organize, filter, and track their daily tasks with priorities and due dates.
+
+## Pages
+
+- [Dashboard](/): Overview of total, completed, in-progress, and pending tasks
+- [My Tasks](/): Full task list with filtering by All, Today, Upcoming, and Completed
+- [Calendar](/): Calendar view of tasks by due date
+- [Important](/): High-priority tasks
+- [Settings](/): User preferences and account settings
+
+## Notes
+
+This is a client-side single-page application built with React and Tailwind CSS.
