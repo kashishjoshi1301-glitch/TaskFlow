@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-import { Menu } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import StatCard from './components/StatCard';
@@ -184,7 +183,6 @@ const App = () => {
      return localStorage.getItem("taskflow-theme") || "light";
    });
 
-   // 🔴 handleNameSubmit ab sabse pehle define ho raha hai, use hone se pehle
    const handleNameSubmit = (name) => {
      localStorage.setItem("taskflow-username", name);
      setUserName(name);
@@ -221,7 +219,6 @@ const App = () => {
    const inProgressTasks = 0;
    const importantTasks = tasks.filter(task => task.priority === "High");
 
-   // 🔴 sirf EK baar rakha hai ab
    if (!userName) {
      return <WelcomeScreen onNameSubmit={handleNameSubmit} />;
    }
@@ -239,7 +236,6 @@ const App = () => {
           )
         }
 
-        {/* 🔴 Sidebar ab isi wrapper div ke ANDAR hai */}
         <div
           className={`fixed lg:static top-0 left-0 h-full z-50 transition-transform duration-300
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
@@ -257,15 +253,7 @@ const App = () => {
           />
         </div>
 
-          <main className={`flex flex-col gap-6 w-full pr-6 pb-6 min-h-screen ${theme === "dark" ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
-
-          <button
-            onClick={() => setIsSidebarOpen(true)}
-            aria-label="Open menu"
-            className={`lg:hidden self-start mt-4 p-2 rounded-lg ${theme === "dark" ? "bg-[#1e293b] text-[#f1f5f9]" : "bg-white text-[#1b262c]"}`}
-          >
-            <Menu size={24} />
-          </button>
+          <main className={`flex flex-col gap-4 lg:gap-6 w-full px-4 lg:px-0 lg:pr-6 pb-6 min-h-screen ${theme === "dark" ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
 
           <Navbar
           searchQuery = {searchQuery}
@@ -275,6 +263,7 @@ const App = () => {
           userName = {userName}
           profileImage={profileImage}
           handleImageUpload={handleImageUpload}
+          onMenuClick={() => setIsSidebarOpen(true)}
           />
 
           {activeItem === "Dashboard" && (

@@ -28,16 +28,16 @@ const StatCard = ({
     <div className={`flex flex-col gap-2 w-full pl-0.5 ${isDark ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
 
       <div className='flex flex-col'>
-      <div className='flex flex-col sm:flex-row justify-between gap-3 sm:gap-0'>
-      <h1 className={`text-2xl sm:text-4xl font-bold p-1 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>Hello, {userName}</h1>
+      <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0'>
+      <h1 className={`text-2xl sm:text-4xl font-bold p-1 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>Hello, {userName}!</h1>
 
-      <div className='rounded-lg pl-1 flex justify-center items-center gap-3 hover:scale-97'>
+      <div className='rounded-lg flex justify-center items-center gap-3 hover:scale-97 w-full sm:w-auto'>
       <button 
       type="button"
       onClick={() => setIsAdding(true)}
       aria-label="Add new task"
       aria-haspopup="dialog"
-      className='p-3 bg-[#0c7c92] text-white rounded-lg hover:scale-97'>
+      className='w-full sm:w-auto p-3 bg-[#0c7c92] text-white rounded-lg hover:scale-97 text-sm sm:text-base'>
         + Add New Task
         </button>
         </div>
@@ -164,48 +164,48 @@ const StatCard = ({
 }
 
       </div>
-      <p className={`text-xl p-1 pb-6 ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>Let's get things done today!</p>
+      <p className={`text-base sm:text-xl p-1 pb-4 sm:pb-6 ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>Let's get things done today!</p>
       </div>
 
-      <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4  gap-4 sm:gap-6 w-full'>
+      <div className='grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 w-full'>
 
-      <div className={`flex h-[12vh] rounded p-4 justify-start items-center gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
-        <div className='flex rounded-full p-2 bg-[#dff6fa]'>
-        <ClipboardMinus size={35} color='#0c7c92' aria-hidden="true"/>
+      <div className={`flex h-auto sm:h-[12vh] rounded-lg p-3 sm:p-4 justify-start items-center gap-3 sm:gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
+        <div className='flex rounded-full p-2 bg-[#dff6fa] shrink-0'>
+        <ClipboardMinus size={24} className="sm:w-[35px] sm:h-[35px]" color='#0c7c92' aria-hidden="true"/>
         </div>
-        <div>
-        <p className={`text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{totalTasks}</p>
-        <p className={isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}>Total Tasks</p>
-        </div>
-      </div>
-
-      <div className={`flex h-[12vh] rounded p-4 justify-start items-center gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
-       <div className='flex rounded-full p-2 bg-[#e3f5ec]'>
-        <CircleCheck size={35} color='#2f9e6e' aria-hidden="true"/>
-        </div>
-        <div>
-        <p className={`text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{completedTasks}</p>
-        <p className={isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}>Completed</p>
+        <div className='min-w-0'>
+        <p className={`text-xl sm:text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{totalTasks}</p>
+        <p className={`text-xs sm:text-base truncate ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>Total Tasks</p>
         </div>
       </div>
 
-      <div className={`flex h-[12vh] rounded p-4 justify-start items-center gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
-        <div className='flex rounded-full p-2 bg-[#e7ecfd]'>
-        <Clock size={35} color='#3651e0' aria-hidden="true"/>
+      <div className={`flex h-auto sm:h-[12vh] rounded-lg p-3 sm:p-4 justify-start items-center gap-3 sm:gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
+       <div className='flex rounded-full p-2 bg-[#e3f5ec] shrink-0'>
+        <CircleCheck size={24} className="sm:w-[35px] sm:h-[35px]" color='#2f9e6e' aria-hidden="true"/>
         </div>
-        <div>
-        <p className={`text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{inProgressTasks}</p>
-        <p className={isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}>In Progress</p>
+        <div className='min-w-0'>
+        <p className={`text-xl sm:text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{completedTasks}</p>
+        <p className={`text-xs sm:text-base truncate ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>Completed</p>
         </div>
       </div>
 
-      <div className={`flex h-[12vh] rounded p-4 justify-start items-center gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
-        <div className='flex rounded-full p-2 bg-[#fbeedc]'>
-        <TriangleAlert size={35} color='#d9922e' aria-hidden="true"/>
+      <div className={`flex h-auto sm:h-[12vh] rounded-lg p-3 sm:p-4 justify-start items-center gap-3 sm:gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
+        <div className='flex rounded-full p-2 bg-[#e7ecfd] shrink-0'>
+        <Clock size={24} className="sm:w-[35px] sm:h-[35px]" color='#3651e0' aria-hidden="true"/>
         </div>
-        <div>
-        <p className={`text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{pendingTasks}</p>
-        <p className={isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}>Pending</p>
+        <div className='min-w-0'>
+        <p className={`text-xl sm:text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{inProgressTasks}</p>
+        <p className={`text-xs sm:text-base truncate ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>In Progress</p>
+        </div>
+      </div>
+
+      <div className={`flex h-auto sm:h-[12vh] rounded-lg p-3 sm:p-4 justify-start items-center gap-3 sm:gap-5 hover:scale-97 border ${isDark ? "bg-[#1e293b] border-[#334155]" : "bg-[#ffffff] border-[#e3e7ea]"}`}>
+        <div className='flex rounded-full p-2 bg-[#fbeedc] shrink-0'>
+        <TriangleAlert size={24} className="sm:w-[35px] sm:h-[35px]" color='#d9922e' aria-hidden="true"/>
+        </div>
+        <div className='min-w-0'>
+        <p className={`text-xl sm:text-3xl font-bold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{pendingTasks}</p>
+        <p className={`text-xs sm:text-base truncate ${isDark ? "text-[#94a3b8]" : "text-[#1b262c]"}`}>Pending</p>
         </div>
       </div>
 

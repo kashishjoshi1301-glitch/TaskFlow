@@ -74,11 +74,11 @@ const FilterButtons = ({tasks, setTasks, searchQuery, theme}) => {
 
   return (
     <div className='w-full'>
-      <div className={isDark ? "bg-[#1e293b] rounded" : "bg-[#ffffff]"}>
+      <div className={`w-full rounded ${isDark ? "bg-[#1e293b]" : "bg-[#ffffff]"}`}>
 
-        <h1 className={`text-2xl font-bold py-3 px-5 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>My Tasks</h1>
+        <h1 className={`text-xl sm:text-2xl font-bold py-3 px-3 sm:px-5 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>My Tasks</h1>
         
-        <div className='flex flex-col sm:flex-row justify-between gap-3 p-2 pl-5'>
+        <div className='flex flex-col sm:flex-row justify-between gap-3 p-3 sm:p-2 sm:pl-5'>
        
        <div role="group" aria-label="Filter tasks" className='flex flex-row flex-wrap gap-2 sm:gap-5'>
             
@@ -116,20 +116,19 @@ const FilterButtons = ({tasks, setTasks, searchQuery, theme}) => {
           type="button"
           onClick={() => setSortAsc(!sortAsc)}
           aria-label={sortAsc ? "Sort by due date ascending, click to reverse" : "Sort by due date descending, click to reverse"}
-          className={`pl-3 pr-3 pt-1 pb-1 mr-3 rounded-lg hover:scale-95 ${isDark ? "bg-[#334155] text-[#94a3b8]" : "bg-[#f1f4f6] text-[#5b6b73]"}`}
+          className={`self-start sm:self-auto px-3 py-1 sm:mr-3 rounded-lg hover:scale-95 text-sm ${isDark ? "bg-[#334155] text-[#94a3b8]" : "bg-[#f1f4f6] text-[#5b6b73]"}`}
         >
             Sort by: Due Date {sortAsc ? "↑" : "↓"}
         </button>
         </div>
 
         <div className={`flex flex-col p-3 pt-1 justify-center items-start gap-3 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>
-          <div className='max-h-[358px] overflow-y-auto flex flex-col w-full scrollbar-none'>
+          <div className='max-h-[500px] overflow-y-auto flex flex-col w-full scrollbar-none'>
           {sortedTasks.length === 0 ? (
             <p className={isDark ? "text-[#94a3b8] p-4" : "text-[#5f6b76] p-4"}>
-              {tasks.length === 0 
-              ? "You don't have a task right now - Start from '+ Add New Task'"
-              : "No tasks found."
-              }
+              {tasks.length === 0
+                ? "Aapke pass abhi koi task nahi hai — '+ Add New Task' se shuru karein!"
+                : "No tasks found."}
             </p>
           ) : (
           sortedTasks.map((task) => {

@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
-import {Search, Bell, Sun, Moon, SquareCheck, User } from "lucide-react";
+import {Search, Bell, Sun, Moon, SquareCheck, User, Menu } from "lucide-react";
 
-const Navbar = ({ searchQuery, setSearchQuery, theme, setTheme, userName, profileImage, handleImageUpload }) => {
+const Navbar = ({ searchQuery, setSearchQuery, theme, setTheme, userName, profileImage, handleImageUpload, onMenuClick }) => {
 
   const isDark = theme === "dark";
 
   return (
     <div className={`border-b pb-5 ${isDark ? "border-[#334155]" : "border-[#e3e7ea]"}`}>
       <nav>
-        <div className='flex flex-row gap-3 justify-between items-center pl-4 pt-5 pr-6'>
-          <div className='flex flex-row gap-15 justify-center items-center flex-1 min-w-0'>
-      
-                 <div className={`flex flex-row justify-center items-center gap-2 p-2 rounded active:scale-98 hover:scale-98 w-full max-w-[300px] sm:max-w-none ${isDark ? "bg-[#1e293b] text-[#94a3b8]" : "bg-[#ffffff] text-[#5f6b76]"}`}>
+        <div className='flex flex-row flex-wrap gap-3 justify-between items-center pl-4 pt-5 pr-4 lg:pr-6'>
+          <div className='flex flex-row gap-3 lg:gap-15 justify-center items-center flex-1 min-w-0'>
+
+                 <button
+                   onClick={onMenuClick}
+                   aria-label="Open menu"
+                   className={`lg:hidden shrink-0 p-2 rounded-lg ${isDark ? "bg-[#1e293b] text-[#f1f5f9]" : "bg-white text-[#1b262c]"}`}
+                 >
+                   <Menu size={20} />
+                 </button>
+
+                 <div className={`flex flex-row justify-center items-center gap-2 p-2 rounded active:scale-98 hover:scale-98 flex-1 lg:flex-none lg:max-w-none min-w-0 ${isDark ? "bg-[#1e293b] text-[#94a3b8]" : "bg-[#ffffff] text-[#9aa5ad]"}`}>
                     <Search size={14} color={isDark ? "#94a3b8" : "#5b6b73"} />
 
                   <label htmlFor="task-search" className='sr-only'>Search tasks</label>
@@ -22,13 +30,13 @@ const Navbar = ({ searchQuery, setSearchQuery, theme, setTheme, userName, profil
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   aria-label="Search tasks"
-                  className={`w-full outline-none text-[12px] bg-transparent ${isDark ? "text-[#f1f5f9] placeholder-[#64748b]" : "text-[#1b262c]"}`}
+                  className={`w-full sm:w-100 outline-none text-[12px] bg-transparent ${isDark ? "text-[#f1f5f9] placeholder-[#64748b]" : "text-[#1b262c]"}`}
                   >
                   </input>
                   </div>
           </div>
 
-                <div className='flex flex-row justify-center items-center gap-4 sm:gap-10 p-2'>
+                <div className='flex flex-row justify-center items-center gap-3 sm:gap-10 p-2 shrink-0'>
                   <button
                     type="button"
                     aria-label="Notifications"
@@ -74,7 +82,7 @@ const Navbar = ({ searchQuery, setSearchQuery, theme, setTheme, userName, profil
                       />
                     </label>
 
-                    <h2 className={`text-sm font-medium ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{userName}</h2>
+                    <h2 className={`hidden sm:block text-sm font-medium ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{userName}</h2>
                   </div>
 
                 </div>
