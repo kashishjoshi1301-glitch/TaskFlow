@@ -184,6 +184,12 @@ const App = () => {
      return localStorage.getItem("taskflow-theme") || "light";
    });
 
+   // 🔴 handleNameSubmit ab sabse pehle define ho raha hai, use hone se pehle
+   const handleNameSubmit = (name) => {
+     localStorage.setItem("taskflow-username", name);
+     setUserName(name);
+   };
+
    useEffect(() => {
      if (profileImage) {
        localStorage.setItem("taskflow-profile-image", profileImage);
@@ -195,10 +201,6 @@ const App = () => {
      const saved = localStorage.getItem(`taskflow-tasks-${userName}`);
      setTasks(saved ? JSON.parse(saved) : []);
    }, [userName]);
-
-   if (!userName) {
-     return <WelcomeScreen onNameSubmit={handleNameSubmit} />;
-   }
 
    useEffect(() => {
      if (!userName) return;
@@ -213,17 +215,13 @@ const App = () => {
      document.body.style.backgroundColor = theme === "dark" ? "#0f172a" : "#f1f4f6";
    }, [theme]);
 
-   const handleNameSubmit = (name) => {
-     localStorage.setItem("taskflow-username", name);
-     setUserName(name);
-   };
-
    const totalTasks = tasks.length;
    const completedTasks = tasks.filter(task => task.completed).length;
    const pendingTasks = tasks.filter(task => !task.completed).length;
    const inProgressTasks = 0;
    const importantTasks = tasks.filter(task => task.priority === "High");
 
+   // 🔴 sirf EK baar rakha hai ab
    if (!userName) {
      return <WelcomeScreen onNameSubmit={handleNameSubmit} />;
    }
@@ -241,22 +239,24 @@ const App = () => {
           )
         }
 
+        {/* 🔴 Sidebar ab isi wrapper div ke ANDAR hai */}
         <div
           className={`fixed lg:static top-0 left-0 h-full z-50 transition-transform duration-300
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
-        ></div>
+        >
+          <Sidebar
+            activeItem={activeItem}
+            setActiveItem={(item) => {
+                setActiveItem(item);
+                setIsSidebarOpen(false);
+              }}
+            theme={theme}
+            userName={userName}
+            profileImage={profileImage}
+            handleImageUpload={handleImageUpload}
+          />
+        </div>
 
-        <Sidebar
-          activeItem={activeItem}
-          setActiveItem={(item) => {
-              setActiveItem(item);
-              setIsSidebarOpen(false); // mobile pe item select karte hi band ho jaaye
-            }}
-          theme={theme}
-          userName={userName}
-          profileImage={profileImage}
-          handleImageUpload={handleImageUpload}
-        />
           <main className={`flex flex-col gap-6 w-full pr-6 pb-6 min-h-screen ${theme === "dark" ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
 
           <button
