@@ -29,7 +29,7 @@ const StatCard = ({
 
       <div className='flex flex-col'>
       <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0'>
-      <h1 className={`text-2xl sm:text-4xl font-bold p-1 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>Hello, {userName}!</h1>
+      <h1 className={`text-2xl sm:text-4xl font-bold p-1 pt-0 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>Hello, {userName}!</h1>
 
       <div className='rounded-lg flex justify-center items-center gap-3 hover:scale-97 w-full sm:w-auto'>
       <button 
