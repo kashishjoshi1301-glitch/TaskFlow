@@ -9,7 +9,7 @@ const FilterButtons = ({
   deletedStack,
   setDeletedStack,
   heading = "My Tasks",
-  listMaxHeight   // NEW: task list ki max height (CSS value, e.g. "300px" ya "calc(100vh - 540px)")
+  listMaxHeight  
 }) => {
  
     const [isEditing, setIsEditing] = useState(null)
