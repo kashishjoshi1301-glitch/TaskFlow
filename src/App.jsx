@@ -6,7 +6,7 @@ import FilterButtons from './components/FilterButtons';
 import WelcomeScreen from './components/WelcomeScreen';
 import CalendarView from './Calenderview';
 import ProfileView from './components/ProfileView';
-import SettingsView from './components/SettingsView';   // NEW
+import SettingsView from './components/SettingsView';   
 
 const toKey = (d) =>
   `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
@@ -30,7 +30,6 @@ const loadImage = (name) => {
   }
 };
 
-// NEW: dashboard ki task list ki height. 540 badhao => list chhoti, page aur chhota. 540 ghatao => list badi.
 const DASHBOARD_LIST_HEIGHT = "clamp(200px, calc(100vh - 540px), 520px)";
 
 const App = () => {
@@ -47,7 +46,7 @@ const App = () => {
 
   const [profileImage, setProfileImage] = useState(() => loadImage(localStorage.getItem("taskflow-username")));
 
-  // NEW: reminders on/off (Settings se control hota hai)
+
   const [remindersEnabled, setRemindersEnabledState] = useState(
     () => localStorage.getItem("taskflow-reminders") !== "off"
   );
@@ -96,8 +95,6 @@ const App = () => {
     setUserName("");
   };
 
-  // NEW: Settings se naam badalna. Tasks/image/notified data naye naam par move hota hai.
-  // Error message return karta hai, sab theek ho toh null.
   const handleRename = (raw) => {
     const newName = raw.trim();
     if (!newName) return "Name khali nahi ho sakta.";
@@ -124,7 +121,7 @@ const App = () => {
     return null;
   };
 
-  // NEW: is user ka saara data delete karke logout
+
   const handleDeleteAccount = () => {
     ["taskflow-tasks-", "taskflow-profile-image-", "taskflow-notified-"].forEach((p) =>
       localStorage.removeItem(p + userName)
@@ -172,7 +169,7 @@ const App = () => {
   }, [tasks, now]);
 
   useEffect(() => {
-    // CHANGED: remindersEnabled off ho toh popup/notification nahi aayega
+
     if (!userName || !remindersEnabled || reminders.length === 0) return;
     const storeKey = `taskflow-notified-${userName}`;
     let notified = [];
@@ -291,8 +288,8 @@ const App = () => {
         )}
 
         <div
-          className={`fixed lg:static top-0 left-0 h-full z-50 transition-transform duration-300
-          ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
+          className={`fixed lg:static top-0 left-0 h-full lg:h-auto lg:self-stretch z-50 transition-transform duration-300
+  ${isSidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
         >
           <Sidebar
             activeItem={activeItem}
@@ -306,7 +303,7 @@ const App = () => {
           />
         </div>
 
-        <main className={`flex flex-col gap-4 lg:gap-6 w-full px-4 lg:px-0 lg:pr-6 pb-6 min-h-screen ${isDark ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
+        <main className={`flex flex-col gap-4 lg:gap-6 w-full px-4 lg:px-0 lg:pr-6 pb-6 ${isDark ? "bg-[#0f172a]" : "bg-[#f1f4f6]"}`}>
 
           <Navbar
             searchQuery={searchQuery}
@@ -335,7 +332,7 @@ const App = () => {
               />
               <FilterButtons
                 tasks={tasks}
-                listMaxHeight= {283}
+                listMaxHeight= {345}
                 {...filterProps}
               />
             </>

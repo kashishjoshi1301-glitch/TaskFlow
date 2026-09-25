@@ -60,7 +60,6 @@ const Sidebar = ({ activeItem, setActiveItem, theme, userName, profileImage }) =
 
       <div className='flex-1'></div>
 
-      {/* Profile: opens the profile page */}
       <button
         type="button"
         onClick={() => setActiveItem("Profile")}

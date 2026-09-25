@@ -9,7 +9,7 @@ const FilterButtons = ({
   deletedStack,
   setDeletedStack,
   heading = "My Tasks",
-  listMaxHeight  
+  listMaxHeight   // NEW: task list ki max height (CSS value, e.g. "300px" ya "calc(100vh - 540px)")
 }) => {
  
     const [isEditing, setIsEditing] = useState(null)
@@ -132,8 +132,9 @@ const FilterButtons = ({
       return { bg: "bg-[#e4f7ea]", text: "text-[#1f7a45]", dot: "bg-[#1f7a45]" };
     };
 
+
     const defaultMaxHeight =
-      heading === "Important Tasks" || heading === "My Tasks" ? "520px" : "300px";
+      heading === "Important Tasks" || heading === "My Tasks" ? "580px" : "320px";
     const maxHeight = listMaxHeight || defaultMaxHeight;
  
   return (
@@ -142,9 +143,10 @@ const FilterButtons = ({
  
         <h1 className={`text-xl sm:text-2xl font-bold py-3 px-3 sm:px-5 ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{heading}</h1>
  
-        <div className='flex flex-col sm:flex-row justify-between gap-3 p-3 sm:p-2 sm:pl-5'>
- 
-          <div role="group" aria-label="Filter tasks" className='flex flex-row flex-wrap gap-2 sm:gap-5'>
+        <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 p-3 sm:p-2 sm:pl-5'>
+
+          
+          <div role="group" aria-label="Filter tasks" className='grid grid-cols-2 sm:flex sm:flex-row gap-2 sm:gap-3'>
             {["All", "Today", "Upcoming", "Completed"].map((name) => (
               <button
                 key={name}
@@ -152,16 +154,16 @@ const FilterButtons = ({
                 onClick={() => setActiveFilter(name)}
                 aria-label={`Show ${name.toLowerCase()} tasks`}
                 aria-pressed={activeFilter === name}
-                className={tabClass(name)}
+                className={`text-center ${tabClass(name)}`}
               >{name}</button>
             ))}
           </div>
- 
+
           <button
             type="button"
             onClick={() => setSortAsc(!sortAsc)}
             aria-label={sortAsc ? "Sort by due date ascending, click to reverse" : "Sort by due date descending, click to reverse"}
-            className={`self-start sm:self-auto px-3 py-1 sm:mr-3 rounded-lg hover:scale-95 text-sm ${isDark ? "bg-[#334155] text-[#94a3b8]" : "bg-[#f1f4f6] text-[#5b6b73]"}`}
+            className={`w-full sm:w-auto text-center sm:mr-3 px-3 py-1.5 sm:py-1 rounded-lg hover:scale-95 text-sm ${isDark ? "bg-[#334155] text-[#94a3b8]" : "bg-[#f1f4f6] text-[#5b6b73]"}`}
           >
             Sort by: Due Date {sortAsc ? "↑" : "↓"}
           </button>
@@ -328,21 +330,18 @@ const FilterButtons = ({
           )}
           </div>
  
+        {deletedStack.length > 0 && (
           <div className='flex items-center gap-3 px-4 pb-2'>
             <button
-              type="button"
-              onClick={undoDelete}
-              disabled={deletedStack.length === 0}
-              aria-label="Undo last deleted task"
-              className={`px-4 py-2 rounded-lg transition-all ${
-                deletedStack.length === 0
-                  ? "opacity-40 cursor-not-allowed bg-[#0c7c92] text-white"
-                  : "bg-[#0c7c92] text-white hover:scale-95"
-              }`}
+            type="button"
+            onClick={undoDelete}
+            aria-label="Undo last deleted task"
+            className='px-4 py-2 rounded-lg transition-all bg-[#0c7c92] text-white hover:scale-95'
             >
-              Undo Delete{deletedStack.length > 0 ? ` (${deletedStack.length})` : ""}
+            Undo Delete ({deletedStack.length})
             </button>
           </div>
+        )}
  
         </div>
       </div>
