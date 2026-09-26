@@ -33,16 +33,17 @@ const Sidebar = ({ activeItem, setActiveItem, theme, userName, profileImage }) =
     }`;
 
   return (
-    <div className={`flex flex-col w-60 pl-6 pt-2 pb-4 h-screen border-r ${isDark ? "bg-[#0f172a] border-[#334155]" : "bg-[#ffffff] border-[#e7e3ea]"}`}>
+   
+    <div className={`flex flex-col w-60 pl-6 pb-4 h-screen border-r ${isDark ? "bg-[#0f172a] border-[#334155]" : "bg-[#ffffff] border-[#e7e3ea]"}`}>
 
-      <div className='flex flex-row justify-start items-center pb-6 pt-4 gap-1 hover:scale-[0.97] transition-all'>
+      <div className='flex flex-row items-center h-16 sm:h-[76px] shrink-0 gap-1 hover:scale-[0.97] transition-all'>
         <SquareCheck size={35} color='#22b8cf' />
         <h1 className={`text-3xl font-semibold ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>
           TaskFlow
         </h1>
       </div>
 
-      <nav aria-label="Main navigation" className='flex flex-col gap-2'>
+      <nav aria-label="Main navigation" className='flex flex-col gap-2 pt-4'>
         {sidebarItems.map(({ name, label, Icon }) => (
           <div key={name} className={itemClass(name)}>
             <Icon size={20} aria-hidden="true" />

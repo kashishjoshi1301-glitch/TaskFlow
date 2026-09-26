@@ -17,12 +17,12 @@ const Navbar = ({
   const isDark = theme === "dark";
 
   return (
-    <div className={`border-b pb-4 sm:pb-5 ${isDark ? "border-[#334155]" : "border-[#e3e7ea]"}`}>
+    <div className={`border-b pb-3 sm:pb-4 ${isDark ? "border-[#334155]" : "border-[#e3e7ea]"}`}>
       <nav>
-        
-        <div className='flex flex-row flex-wrap gap-3 justify-between items-center pt-4 sm:pt-5 px-4 lg:px-0 lg:pr-6'>
 
-          <div className='flex flex-row items-center gap-3 flex-1 min-w-0'>
+        <div className='flex flex-row flex-wrap gap-3 sm:gap-4 md:gap-6 justify-between items-center h-16 sm:h-[76px] px-4 sm:px-5 lg:px-0 lg:pr-6'>
+
+          <div className='flex flex-row items-center gap-2 sm:gap-3 flex-1 min-w-0'>
 
             <button
               onClick={onMenuClick}
@@ -32,7 +32,7 @@ const Navbar = ({
               <Menu size={20} />
             </button>
 
-            <div className={`flex flex-row items-center gap-2 px-3 py-2 rounded-lg active:scale-98 hover:scale-98 flex-1 min-w-0 ${isDark ? "bg-[#1e293b] text-[#94a3b8]" : "bg-[#ffffff] text-[#9aa5ad]"}`}>
+            <div className={`flex flex-row items-center gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border transition-colors flex-1 min-w-0 ${isDark ? "bg-[#1e293b] border-[#334155] text-[#94a3b8] hover:border-[#475569] focus-within:border-[#22b8cf]" : "bg-[#ffffff] border-[#e3e7ea] text-[#9aa5ad] hover:border-[#c7d0d6] focus-within:border-[#22b8cf]"}`}>
               <Search size={16} color={isDark ? "#94a3b8" : "#5b6b73"} className='shrink-0' />
 
               <label htmlFor="task-search" className='sr-only'>Search tasks</label>
@@ -48,13 +48,14 @@ const Navbar = ({
             </div>
           </div>
 
-          <div className='flex flex-row items-center gap-3 sm:gap-4 shrink-0'>
+         
+          <div className='flex flex-row items-center gap-3 sm:gap-5 md:gap-6 shrink-0'>
 
             <button
               type="button"
               onClick={onBellClick}
               aria-label={reminderCount > 0 ? `Notifications, ${reminderCount} due soon` : "Notifications"}
-              className={`relative flex items-center justify-center p-2 rounded-full hover:scale-95 ${isDark ? "bg-[#1e293b]" : "bg-[#f1f4f6]"}`}
+              className={`relative flex items-center justify-center p-2 sm:p-2.5 rounded-full hover:scale-95 transition-transform ${isDark ? "bg-[#1e293b]" : "bg-[#f1f4f6]"}`}
             >
               <Bell size={20} color={isDark ? "#94a3b8" : "#5b6b73"} />
               {reminderCount > 0 && (
@@ -67,7 +68,7 @@ const Navbar = ({
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              className={`flex justify-center items-center p-2 rounded-full hover:scale-95 transition-all ${isDark ? "bg-[#334155]" : "bg-[#dff6fa]"}`}
+              className={`flex justify-center items-center p-2 sm:p-2.5 rounded-full hover:scale-95 transition-all ${isDark ? "bg-[#334155]" : "bg-[#dff6fa]"}`}
             >
               {isDark ? (
                 <Sun size={18} color='#f5b73f' />
@@ -80,7 +81,7 @@ const Navbar = ({
               type="button"
               onClick={onProfileClick}
               aria-label="Open profile"
-              className='flex flex-row items-center gap-2 hover:scale-95'
+              className='flex flex-row items-center gap-2 sm:gap-2.5 hover:scale-95 transition-transform pl-1 sm:pl-2 sm:border-l border-current/10'
             >
               <div className={`w-9 h-9 rounded-full overflow-hidden flex items-center justify-center border ${isDark ? "bg-[#334155] border-[#475569]" : "bg-[#dff6fa] border-[#e3e7ea]"}`}>
                 {profileImage ? (
@@ -90,7 +91,7 @@ const Navbar = ({
                 )}
               </div>
 
-              <h2 className={`hidden sm:block text-sm font-medium ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{userName}</h2>
+              <h2 className={`hidden md:block text-sm font-medium max-w-[100px] truncate ${isDark ? "text-[#f1f5f9]" : "text-[#1b262c]"}`}>{userName}</h2>
             </button>
 
           </div>
