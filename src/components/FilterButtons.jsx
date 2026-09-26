@@ -137,7 +137,7 @@ const FilterButtons = ({
       return { bg: "bg-[#e4f7ea]", text: "text-[#1f7a45]", dot: "bg-[#1f7a45]" };
     };
 
-    const maxHeight = listMaxHeight || "393px";
+    const maxHeight = listMaxHeight || "580px";
 
   return (
     <div className='w-full'>
